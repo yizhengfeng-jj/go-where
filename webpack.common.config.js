@@ -3,25 +3,25 @@ let path = require('path');
 let webpack = require('webpack');
 let productionConfig = require('./webpack.product.config.js');
 let developmentConfig = require('./webpack.develop.config.js');
-let vueLoaderPlugin =  require('vue-loader/lib/plugin');
-let extractTextWebpackPlugin = require('extract-text-webpack-plugin');
-let optimizeCssAssetPlugin = require('optimize-css-assets-webpack-plugin');
-let htmlWebpackPlugin = require('html-webpack-plugin');
+let VueLoaderPlugin = require('vue-loader/lib/plugin');
+let ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+let OptimizeCssAssetPlugin = require('optimize-css-assets-webpack-plugin');
+let HtmlWebpackPlugin = require('html-webpack-plugin');
 const genarationConfig = env => {
     return {
         entry: {
-            app:'./src/index.js',
-            vender:['lodash','jquery']
+            app: './src/index.js',
+            vender: ['lodash', 'jquery']
         },
-        output:{
-            path: path.resolve(__dirname , 'dist'),
+        output: {
+            path: path.resolve(__dirname, 'dist'),
             filename: '[name]-build.js',
-            publicPath:'',
-            chunkFilename: "[name].chunk.js"
+            publicPath: '',
+            chunkFilename: '[name].chunk.js'
         },
-        resolve:{
-            alias:{
-                'vue$':'vue/dist/vue.js'
+        resolve: {
+            alias: {
+                'vue$': 'vue/dist/vue.js'
             }
         },
         // optimization: {
@@ -41,25 +41,25 @@ const genarationConfig = env => {
         //         name:'manifest'
         //     }
         // },
-         module:{
+        module: {
             rules: [
                 {
-                    test:/\.css$/,
-                    use:extractTextWebpackPlugin.extract({
-                        fallback:{
-                            loader:'style-loader'
+                    test: /\.css$/,
+                    use: ExtractTextWebpackPlugin.extract({
+                        fallback: {
+                            loader: 'style-loader'
                         },
-                        use:[{
-                            loader:'css-loader',
+                        use: [{
+                            loader: 'css-loader',
                             options: {
-                                minimize:true
+                                minimize: true
                             }
                         },
                         {
                             loader: 'postcss-loader',
                             options: {
-                                ident:'postcss',
-                                plugins:[
+                                ident: 'postcss',
+                                plugins: [
                                     require('autoprefixer')(),
                                     require('postcss-cssnext')
                                 ]
@@ -69,61 +69,61 @@ const genarationConfig = env => {
                     })
                 },
                 {
-                    test:/\.vue$/,
-                    use:['vue-loader']
+                    test: /\.vue$/,
+                    use: ['vue-loader']
                 },
                 {
-                    test:/\.js$/,
-                    use:[
-                    {
-                        loader:'babel-loader'
-                    },
-                    {
-                        loader:'eslint-loader',
-                        options: {
-                            formatter:require('eslint-friendly-formatter')
-                        }
-                    }
-                    ],
-                    exclude:/node_modules/
-                },
-                {
-                    test:/\.ts$/,
-                    use:{
-                        loader:'ts-loader'
-                    }
-                },
-                {
-                    test:/\.(jpg|png|gif|jpeg)$/,
-                    use:[
+                    test: /\.js$/,
+                    use: [
                         {
-                            loader:'url-loader',
+                            loader: 'babel-loader'
+                        },
+                        {
+                            loader: 'eslint-loader',
                             options: {
-                                outputPath:'',
-                                publicPath:'./img',
-                                useRelativePath:true,
-                                limit:9000
+                                formatter: require('eslint-friendly-formatter')
+                            }
+                        }
+                    ],
+                    exclude: /node_modules/
+                },
+                {
+                    test: /\.ts$/,
+                    use: {
+                        loader: 'ts-loader'
+                    }
+                },
+                {
+                    test: /\.(jpg|png|gif|jpeg)$/,
+                    use: [
+                        {
+                            loader: 'url-loader',
+                            options: {
+                                outputPath: '',
+                                publicPath: './img',
+                                useRelativePath: true,
+                                limit: 9000
                             }
                         },
                         {
-                            loader:'img-loader',
+                            loader: 'img-loader',
                             options: {
-                                 plugins:[
-                                     require('imagemin-jpegtran')({
-                                        quality:"80"
-                                     })
-                                    ]
+                                plugins: [
+                                    require('imagemin-jpegtran')({
+                                        quality: '80'
+                                    })
+                                ]
                             }
                         }
                     ]
                 },
                 {
-                    test:/\.html$/,
-                    use:[
+                    test: /\.html$/,
+                    use: [
                         {
-                            loader:'html-loader',
+                            loader: 'html-loader',
                             options: {
-                                attrs:['img:src']
+                                attrs: ['img:src']
                             }
                         }
                     ]
@@ -131,34 +131,34 @@ const genarationConfig = env => {
             ]
         },
 
-        plugins:[
-            new vueLoaderPlugin(),
-            new extractTextWebpackPlugin({
-                filename:'app.min.css'
+        plugins: [
+            new VueLoaderPlugin(),
+            new ExtractTextWebpackPlugin({
+                filename: 'app.min.css'
             }),
-            new optimizeCssAssetPlugin({
-                assetNameRegExp:/\.css$/g,
-                cssProcessor:require('cssnano'),
-                cssProcessorOptions:{discardComments:{removeAll:true}},
-                caPrint:true
+            new OptimizeCssAssetPlugin({
+                assetNameRegExp: /\.css$/g,
+                cssProcessor: require('cssnano'),
+                cssProcessorOptions: {discardComments: {removeAll: true}},
+                caPrint: true
             }),
             new webpack.ProvidePlugin({
                 $: 'jquery'
             }),
-            new htmlWebpackPlugin({
-                filename:'index.html',
-                template:'./index.html',
-                chunks:['app'],
+            new HtmlWebpackPlugin({
+                filename: 'index.html',
+                template: './index.html',
+                chunks: ['app'],
                 minify: {
                     collapseWhitespace: true
                 }
             })
         ]
-    }
-}
+    };
+};
 
 module.exports = env => {
-    let config = env === 'production' ? productionConfig : developmentConfig
+    let config = env === 'production' ? productionConfig : developmentConfig;
     console.log(config);
-    return merge(genarationConfig(env), config)
-}
+    return merge(genarationConfig(env), config);
+};

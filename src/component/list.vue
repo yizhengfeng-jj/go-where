@@ -1,11 +1,9 @@
 <template>
-    <span class='red'>{{name}} : {{age}} -- {{index}}</span>
+  <div> {{index}}</div>
 </template>
 <script>
 import * as _ from 'lodash';
 import $ from 'jquery';
-console.log($)
-console.log(666666);
     export default {
         name : 'List',
         props:['name','age'],

@@ -1,8 +1,8 @@
-let cleanWebpackPlugin = require('clean-webpack-plugin');
+let CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
-    mode:'production',
+    mode: 'production',
 
-    plugins:[
-        new cleanWebpackPlugin('dist')
+    plugins: [
+        new CleanWebpackPlugin('dist')
     ]
-}
+};

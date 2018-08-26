@@ -1,15 +1,12 @@
-import './css/common.css';
-import './css/test.css';
 import Vue from 'vue';
-import List from './component/list.vue';
+import router from './router/index';
+import App from './component/app.vue';
+import './css/reset.css';
 var app = new Vue({
     el: '#app',
+    router,
     components: {
-        List: List
-    },
-    data: {
-        content: '我是vue',
-        items: [{name: 'json', age: 21}, {name: 'json1', age: 22}, {name: 'json2', age: 23}]
+        App: App
     }
 });
 console.log(app);
