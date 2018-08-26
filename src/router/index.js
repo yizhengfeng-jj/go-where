@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import HelloHtml from '../component/hello.vue';
+import Home from '../pages/home/home.vue';
 import List from '../component/list.vue';
 Vue.use(Router);
 export default new Router({
@@ -8,7 +8,7 @@ export default new Router({
         {
             path: '/',
             name: 'helloWorld',
-            component: HelloHtml
+            component: Home
         },
         {
             path: '/list',

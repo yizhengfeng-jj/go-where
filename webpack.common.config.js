@@ -69,6 +69,22 @@ const genarationConfig = env => {
                     })
                 },
                 {
+                    test: /\.styl$/,
+                    use: [
+                        'style-loader',
+                        'css-loader',
+                        'stylus-loader'
+                    ]
+                },
+                {
+                    test: /\.stylus$/,
+                    use: [
+                        'style-loader',
+                        'css-loader',
+                        'stylus-loader'
+                    ]
+                },
+                {
                     test: /\.vue$/,
                     use: ['vue-loader']
                 },
@@ -127,6 +143,12 @@ const genarationConfig = env => {
                             }
                         }
                     ]
+                },
+                {
+                    test: /\.(eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
+                    use: {
+                        loader: 'file-loader'
+                    }
                 }
             ]
         },
