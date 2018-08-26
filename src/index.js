@@ -9,4 +9,5 @@ var app = new Vue({
         App: App
     }
 });
+console.log(55);
 console.log(app);
