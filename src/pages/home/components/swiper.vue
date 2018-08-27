@@ -2,7 +2,7 @@
     <div class='wrapper'>
         <swiper :options="swiperOption">
             <swiper-slide v-for='list in swiperList' :key='list.id'>
-                <img :src="list.url" alt="图片">
+                <img :src="list.url" alt="图片" class='img'>
             </swiper-slide>
             <div class="swiper-pagination"  slot="pagination"></div>
        </swiper>
@@ -44,5 +44,7 @@
         padding-bottom: 26.6%
         height:0
         background: #ccc
+        .img
+            width:100%
 </style>
 
