@@ -4,12 +4,12 @@
             热门推荐
         </div>
         <ul class='img-list'>
-            <li class='simple-item' v-for='introduce in introduceLists' :key='introduce.id'>
-                <img :src="introduce.url" alt="图片"/>
+            <li class='simple-item' v-for='introduce in recommendList' :key='introduce.id'>
+                <img :src="introduce.imgUrl" alt="图片"/>
                 <div class='hot-introduce'>
                     <p>{{introduce.title}}</p>
-                    <p class='hot-des'>{{introduce.des}}</p>
-                    <p class='hot-button'>{{introduce.buttonText}}</p>
+                    <p class='hot-des'>{{introduce.desc}}</p>
+                    <p class='hot-button'>查看详情</p>
                 </div>
             </li>
         </ul>
@@ -18,41 +18,14 @@
 <script>
     export default {
         name: 'HomeIntroduce',
+        props: {
+            recommendList: {
+                type: Array
+            }
+        },
         data: function() {
             return {
-                introduceLists: [
-                    {
-                        id: '001',
-                        url: 'http://img1.qunarzz.com/sight/p0/1607/7c/7cda8b6782dabd80b4.img.jpg_200x200_2039e660.jpg',
-                        title: '大连圣亚海洋世界',
-                        des: '浪漫大连圣地，海洋主题',
-                        buttonText: '查看详情'
-                    },
-                    {
-                        id: '002',
-                        url: 'http://img1.qunarzz.com/sight/p0/1609/80/8092254b7f5f016ea3.water.jpg_200x200_cd798d39.jpg',
-                        title: '上海欢乐谷',
-                        des: '上海欢乐谷,你值得拥有',
-                        buttonText: '查看详情'
-                    },
-                    {
-                        id: '003',
-                        url: 'http://img1.qunarzz.com/tuan/team2/1507/2c/83e0e0e7ae082a.jpg_200x200_6d7378b2.jpg',
-                        title: '东方明珠',
-                        des: '上海之都，东方明珠',
-                        buttonText: '查看详情'
-                    },
-                    {
-                        id: '004',
-                        url: 'http://img1.qunarzz.com/sight/p0/1603/17/170481fb9caf500790.water.jpg_200x200_a32b9a92.jpg',
-                        title: '上海野生动物园',
-                        des: '一群动物在换了的玩耍',
-                        buttonText: '查看详情'
-                    },
-
-
-
-                ]
+                test: ''
             }
         }
     }
@@ -73,6 +46,9 @@
             .hot-des
                 margin: 6px 0 16px 0
                 color: #ccc
+                overflow: hidden
+                white-space: nowrap
+                text-overflow: ellipsis
             .hot-button
                 display:inline-block
                 background: #00afc7

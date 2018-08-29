@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '../pages/home/home.vue';
-import List from '../component/list.vue';
+import City from '../pages/city/city.vue';
 Vue.use(Router);
 export default new Router({
     routes: [
@@ -11,9 +11,9 @@ export default new Router({
             component: Home
         },
         {
-            path: '/list',
-            name: 'list',
-            component: List
+            path: '/city',
+            name: 'city',
+            component: City
         }
     ]
 });

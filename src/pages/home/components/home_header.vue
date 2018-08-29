@@ -8,14 +8,21 @@
             输入城市/景点/游玩主题
         </div>
         <div class='header-right'>
-            城市
-            <span class='iconfont'>&#xe64a;</span>
+           <router-link to='/city'>
+                {{city}}
+                <span class='iconfont'>&#xe64a;</span>
+           </router-link>
         </div>
     </div>
 </template>
 <script>
     export default {
         name: 'HomeHeader',
+        props: {
+            city: {
+                type: String
+            }
+        },
         data: function() {
             return {
                 test: 'aaa'
@@ -46,5 +53,8 @@
             width: 5rem
             float: right
             padding-left: 15px
+            a
+                text-decoration: none
+                color: #fff
 </style>
 
