@@ -1,12 +1,17 @@
 <template>
-    <city-header></city-header>
+    <div>
+        <city-header></city-header>
+        <city-search></city-search>
+    </div>
 </template>
 <script>
 import CityHeader from './components/city_header.vue';
+import CitySearch from './components/city_search.vue';
     export default {
         name: 'City',
         components: {
-            CityHeader: CityHeader
+            CityHeader: CityHeader,
+            CitySearch: CitySearch
         },
         data: function() {
             return {

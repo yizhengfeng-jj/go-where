@@ -19,7 +19,7 @@
 <style lang='stylus' scoped>
     .city-header
         width: 100%
-        line-height: 3rem
+        line-height: 2rem
         text-align: center
         background: #00b4d4
         font-size: 1rem
@@ -34,6 +34,6 @@
                 display: inline-block
                 width: 30px
                 text-align: center
-                line-height: 3rem
+                line-height: 2rem
 
 </style>
